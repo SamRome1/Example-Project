@@ -1,8 +1,49 @@
+const loginScreen = document.getElementById('login-screen');
+const appScreen = document.getElementById('app-screen');
+const loginForm = document.getElementById('login-form');
+const usernameInput = document.getElementById('username-input');
+const userLabel = document.getElementById('user-label');
+const logoutBtn = document.getElementById('logout-btn');
+
 const form = document.getElementById('todo-form');
 const input = document.getElementById('todo-input');
 const list = document.getElementById('todo-list');
 
-let todos = JSON.parse(localStorage.getItem('todos') || '[]');
+// TODO: replace with real auth — currently just stores username in sessionStorage
+let currentUser = sessionStorage.getItem('user');
+
+function showApp(username) {
+  currentUser = username;
+  userLabel.textContent = `Signed in as ${username}`;
+  loginScreen.classList.add('hidden');
+  appScreen.classList.remove('hidden');
+  loadTodos();
+}
+
+function showLogin() {
+  currentUser = null;
+  sessionStorage.removeItem('user');
+  appScreen.classList.add('hidden');
+  loginScreen.classList.remove('hidden');
+}
+
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = usernameInput.value.trim();
+  if (!username) return;
+  sessionStorage.setItem('user', username);
+  showApp(username);
+});
+
+logoutBtn.addEventListener('click', showLogin);
+
+let todos = [];
+
+function loadTodos() {
+  // TODO: scope todos per user (currently shared across all users)
+  todos = JSON.parse(localStorage.getItem('todos') || '[]');
+  render();
+}
 
 function render() {
   list.innerHTML = '';
@@ -46,4 +87,6 @@ form.addEventListener('submit', (e) => {
   render();
 });
 
-render();
+if (currentUser) {
+  showApp(currentUser);
+}

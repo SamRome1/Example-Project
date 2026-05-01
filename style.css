@@ -14,6 +14,17 @@ body {
   justify-content: center;
 }
 
+.screen {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
 .container {
   background: white;
   padding: 2rem;
@@ -23,18 +34,32 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
+}
+
+h1 {
   font-size: 1.75rem;
 }
 
-#todo-form {
+#user-label {
+  margin-left: auto;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+#todo-form,
+#login-form {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
-#todo-input {
+#todo-input,
+#username-input {
   flex: 1;
   padding: 0.5rem 0.75rem;
   border: 1px solid #ccc;
@@ -54,6 +79,16 @@ button {
 
 button:hover {
   background: #2563eb;
+}
+
+#logout-btn {
+  padding: 0.35rem 0.75rem;
+  background: #6b7280;
+  font-size: 0.875rem;
+}
+
+#logout-btn:hover {
+  background: #4b5563;
 }
 
 #todo-list {

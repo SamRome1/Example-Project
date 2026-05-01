@@ -7,14 +7,33 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>My Todos</h1>
-    <form id="todo-form">
-      <input type="text" id="todo-input" placeholder="Add a new todo..." required />
-      <button type="submit">Add</button>
-    </form>
-    <ul id="todo-list"></ul>
+  <!-- Login screen — shown when no user is logged in -->
+  <div id="login-screen" class="screen">
+    <div class="container">
+      <h1>Sign In</h1>
+      <form id="login-form">
+        <input type="text" id="username-input" placeholder="Username" required />
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
   </div>
+
+  <!-- App screen — shown after login -->
+  <div id="app-screen" class="screen hidden">
+    <div class="container">
+      <div class="header">
+        <h1>My Todos</h1>
+        <span id="user-label"></span>
+        <button id="logout-btn">Sign Out</button>
+      </div>
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Add a new todo..." required />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="todo-list"></ul>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>
