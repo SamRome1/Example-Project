@@ -1,3 +1,10 @@
+const themeToggle = document.getElementById('theme-toggle');
+// TODO: persist theme preference to localStorage
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  themeToggle.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+});
+
 const form = document.getElementById('todo-form');
 const input = document.getElementById('todo-input');
 const list = document.getElementById('todo-list');
